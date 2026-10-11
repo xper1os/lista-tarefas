@@ -19,10 +19,12 @@ public class Main {
                 System.out.println("Tarefas concluídas não podem ser maior que o numero total de tarefas!");
             } else {
                 int pendentes = totalTarefas - tarefasConcluidas;
+                double percentual = (double) tarefasConcluidas / totalTarefas * 100;
 
                 System.out.println("1 - Ver resumo");
                 System.out.println("2 - Ver situação das tarefas");
                 System.out.println("3 - Ver progresso");
+                System.out.println("4 - Ver status");
                 System.out.println("0 - Sair");
                 int opcao = Integer.parseInt(IO.readln("Escolha uma opção: "));
 
@@ -50,7 +52,18 @@ public class Main {
                     }
                     case 3 -> {
                         System.out.println("Você concluiu " + tarefasConcluidas + " de " + totalTarefas + ".");
-                        double percentual = (double) tarefasConcluidas / totalTarefas * 100;
+                        System.out.println("Progresso: " + percentual + "%");
+                    }
+                    case 4 -> {
+                        if (percentual == 100) {
+                            System.out.println("Parabéns! Tudo concluído!");
+                        } else if (percentual >= 50) {
+                            System.out.println("Mais da metade, continue assim!");
+                        } else if (percentual > 0) {
+                            System.out.println("Você já começou, bora!");
+                        } else {
+                            System.out.println("Ainda não começou.");
+                        }
                         System.out.println("Progresso: " + percentual + "%");
                     }
                     case 0 -> System.out.println("Até logo!");
