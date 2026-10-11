@@ -13,45 +13,49 @@ public class Main {
             System.out.println("Você não tem tarefas!");
         } else {
             int tarefasConcluidas = Integer.parseInt(IO.readln("Quantas tarefas concluidas?: "));
-            int pendentes = totalTarefas - tarefasConcluidas;
+            if (tarefasConcluidas < 0) {
+                System.out.println("Tarefas concluídas não podem ser menor que zero!");
+            } else if (tarefasConcluidas > totalTarefas) {
+                System.out.println("Tarefas concluídas não podem ser maior que o numero total de tarefas!");
+            } else {
+                int pendentes = totalTarefas - tarefasConcluidas;
 
-            System.out.println("1 - Ver resumo");
-            System.out.println("2 - Ver situação das tarefas");
-            System.out.println("3 - Ver progresso");
-            System.out.println("0 - Sair");
-            int opcao = Integer.parseInt(IO.readln("Escolha uma opção: "));
+                System.out.println("1 - Ver resumo");
+                System.out.println("2 - Ver situação das tarefas");
+                System.out.println("3 - Ver progresso");
+                System.out.println("0 - Sair");
+                int opcao = Integer.parseInt(IO.readln("Escolha uma opção: "));
 
-            switch (opcao) {
-                case 1 -> {
-                    System.out.println("Usuário: " + nomeUsuario);
-                    System.out.println("Total de Tarefas: " + totalTarefas);
-                    System.out.println("Tarefas concluidas: " + tarefasConcluidas);
-                    System.out.println("Pendentes de Tarefas: " + pendentes);
-                }
-                case 2 -> {
-                    if (pendentes > 0) {
-                        if (pendentes > 1) {
-                            System.out.println("Existem " + pendentes + " tarefas pendentes!");
+                switch (opcao) {
+                    case 1 -> {
+                        System.out.println("Usuário: " + nomeUsuario);
+                        System.out.println("Total de Tarefas: " + totalTarefas);
+                        System.out.println("Tarefas concluidas: " + tarefasConcluidas);
+                        System.out.println("Pendentes de Tarefas: " + pendentes);
+                    }
+                    case 2 -> {
+                        if (pendentes > 0) {
+                            if (pendentes > 1) {
+                                System.out.println("Existem " + pendentes + " tarefas pendentes!");
+                            } else {
+                                System.out.println("Existe " + pendentes + " tarefa pendente!");
+                            }
                         } else {
-                            System.out.println("Existe " + pendentes + " tarefa pendente!");
-                        }
-                    } else if (pendentes < 0) {
-                        System.out.println("Atenção: você digitou mais concluídas do que o total!");
-                    } else {
-                        if (totalTarefas > 1) {
-                            System.out.println("Todas as tarefas foram concluídas!");
-                        } else {
-                            System.out.println("A tarefa foi concluída!");
+                            if (totalTarefas > 1) {
+                                System.out.println("Todas as tarefas foram concluídas!");
+                            } else {
+                                System.out.println("A tarefa foi concluída!");
+                            }
                         }
                     }
+                    case 3 -> {
+                        System.out.println("Você concluiu " + tarefasConcluidas + " de " + totalTarefas + ".");
+                        double percentual = (double) tarefasConcluidas / totalTarefas * 100;
+                        System.out.println("Progresso: " + percentual + "%");
+                    }
+                    case 0 -> System.out.println("Até logo!");
+                    default -> System.out.println("Opção Inválida!");
                 }
-                case 3 -> {
-                    System.out.println("Você concluiu " + tarefasConcluidas + " de " + totalTarefas + ".");
-                    double percentual = (double) tarefasConcluidas / totalTarefas * 100;
-                    System.out.println("Progresso: " + percentual + "%");
-                }
-                case 0 -> System.out.println("Até logo!");
-                default -> System.out.println("Opção Inválida!");
             }
         }
     }
