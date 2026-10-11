@@ -45,8 +45,11 @@ public class Main {
                         }
                     }
                 }
-                case 3 -> System.out.println("Você concluiu " + tarefasConcluidas + " de " + totalTarefas + ".");
-
+                case 3 -> {
+                    System.out.println("Você concluiu " + tarefasConcluidas + " de " + totalTarefas + ".");
+                    double percentual = (double) tarefasConcluidas / totalTarefas * 100;
+                    System.out.println("Progresso: " + percentual + "%");
+                }
                 case 0 -> System.out.println("Até logo!");
                 default -> System.out.println("Opção Inválida!");
             }
