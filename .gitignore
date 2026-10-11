@@ -1,0 +1,8 @@
+# Arquivos compilados (gerados pelo javac)
+*.class
+
+# Configurações do IntelliJ
+.idea/
+
+# Pasta de saída do build do IntelliJ (aparece mais pra frente)
+out/
