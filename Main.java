@@ -27,6 +27,7 @@ public class Main {
                     System.out.println("2 - Ver situação das tarefas");
                     System.out.println("3 - Ver progresso");
                     System.out.println("4 - Ver status");
+                    System.out.println("5 - Ver lista");
                     System.out.println("0 - Sair");
                     opcao = Integer.parseInt(IO.readln("Escolha uma opção: "));
 
@@ -67,6 +68,15 @@ public class Main {
                                 System.out.println("Ainda não começou.");
                             }
                             System.out.println("Progresso: " + percentual + "%");
+                        }
+                        case 5 -> {
+                            for (int i = 1; i <= totalTarefas; i++) {
+                                if (tarefasConcluidas >= i) {
+                                    System.out.println("Tarefa " + i + " - [x] Concluída!");
+                                } else {
+                                    System.out.println("Tarefa " + i + " - [ ] Pendente!");
+                                }
+                            }
                         }
                         case 0 -> {
                             System.out.println("Até logo!");
