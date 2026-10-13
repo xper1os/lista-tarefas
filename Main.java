@@ -2,42 +2,30 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Minhas Tarefas");
-        System.out.println("Bem vindo a sua lista de Tarefas!");
+        System.out.println("Bem-vindo à sua lista de tarefas!");
 
         String nomeUsuario = IO.readln("Digite seu nome: ");
-        int totalTarefas = Integer.parseInt(IO.readln("Quantas tarefas você tem atualmente?: "));
 
-        if (totalTarefas < 0) {
-            System.out.println("Tarefas não podem ser menor que zero!");
-        } else if (totalTarefas == 0) {
-            System.out.println("Você não tem tarefas!");
-        } else {
-            int tarefasConcluidas = Integer.parseInt(IO.readln("Quantas tarefas concluidas?: "));
-            if (tarefasConcluidas < 0) {
-                System.out.println("Tarefas concluídas não podem ser menor que zero!");
-            } else if (tarefasConcluidas > totalTarefas) {
-                System.out.println("Tarefas concluídas não podem ser maior que o numero total de tarefas!");
-            } else {
-                int pendentes = totalTarefas - tarefasConcluidas;
-                double percentual = calcularPercentual(tarefasConcluidas, totalTarefas);
+        int totalTarefas = lerTotal();
+        int tarefasConcluidas = lerConcluidas(totalTarefas);
+        int pendentes = calcularPendentes(totalTarefas, tarefasConcluidas);
+        double percentual = calcularPercentual(tarefasConcluidas, totalTarefas);
 
-                int opcao;
-                do {
-                    mostrarMenu();
-                    opcao = Integer.parseInt(IO.readln("Escolha uma opção: "));
-
-                    switch (opcao) {
-                        case 1 -> mostrarResumo(nomeUsuario, totalTarefas, tarefasConcluidas, pendentes, percentual);
-                        case 2 -> mostrarSituacao(pendentes, totalTarefas);
-                        case 3 -> mostrarProgresso(tarefasConcluidas, totalTarefas, percentual);
-                        case 4 -> mostrarStatus(percentual);
-                        case 5 -> mostrarLista(totalTarefas, tarefasConcluidas);
-                        case 0 -> System.out.println("Até logo!");
-                        default -> System.out.println("Opção Inválida!");
-                    }
-                } while (opcao != 0);
+        int opcao;
+        do {
+            mostrarMenu();
+            opcao = Integer.parseInt(IO.readln("Escolha uma opção: "));
+            switch (opcao) {
+                case 1 -> mostrarResumo(nomeUsuario, totalTarefas, tarefasConcluidas, pendentes, percentual);
+                case 2 -> mostrarSituacao(pendentes, totalTarefas);
+                case 3 -> mostrarProgresso(tarefasConcluidas, totalTarefas, percentual);
+                case 4 -> mostrarStatus(percentual);
+                case 5 -> mostrarLista(totalTarefas, tarefasConcluidas);
+                case 0 -> System.out.println("Até logo!");
+                default -> System.out.println("Opção Inválida!");
             }
-        }
+        } while (opcao != 0);
+
     }
 
     static void mostrarMenu() {
@@ -64,8 +52,8 @@ public class Main {
         System.out.println("Resumo:");
         System.out.println("Usuário: " + usuario);
         System.out.println("Total de Tarefas: " + total);
-        System.out.println("Tarefas concluidas: " + concluidas);
-        System.out.println("Pendentes de Tarefas: " + pendentes);
+        System.out.println("Tarefas concluídas: " + concluidas);
+        System.out.println("Tarefas pendentes: " + pendentes);
         mostrarPercentual(percentual);
     }
 
@@ -109,5 +97,37 @@ public class Main {
 
     static double calcularPercentual(int concluidas, int total) {
         return (double) concluidas / total * 100;
+    }
+
+    static int lerTotal() {
+        int total;
+        do {
+            total = Integer.parseInt(IO.readln("Quantas tarefas você tem atualmente?: "));
+            if (total < 0) {
+                System.out.println("Total de tarefas não pode ser negativo!");
+            } else if (total == 0) {
+                System.out.println("Total de tarefas não pode ser zero!");
+            }
+        } while (total <= 0);
+
+        return total;
+    }
+
+    static int lerConcluidas(int total) {
+        int concluidas;
+        do {
+            concluidas = Integer.parseInt(IO.readln("Quantas tarefas concluídas?: "));
+            if (concluidas < 0) {
+                System.out.println("Total de concluídas não pode ser negativo!");
+            } else if (concluidas > total) {
+                System.out.println("Total de concluídas não pode ser maior que o total de tarefas!");
+            }
+        } while (concluidas < 0 || concluidas > total);
+
+        return concluidas;
+    }
+
+    static int calcularPendentes(int total, int concluidas) {
+        return total - concluidas;
     }
 }
