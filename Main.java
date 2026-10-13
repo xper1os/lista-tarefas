@@ -19,7 +19,7 @@ public class Main {
                 System.out.println("Tarefas concluídas não podem ser maior que o numero total de tarefas!");
             } else {
                 int pendentes = totalTarefas - tarefasConcluidas;
-                double percentual = (double) tarefasConcluidas / totalTarefas * 100;
+                double percentual = calcularPercentual(tarefasConcluidas, totalTarefas);
 
                 int opcao;
                 do {
@@ -104,6 +104,10 @@ public class Main {
     }
 
     static void mostrarPercentual(double percentual) {
-        System.out.println(String.format("Progresso: %.2f%%", percentual));
+        System.out.printf("Progresso: %.2f%%%n", percentual);
+    }
+
+    static double calcularPercentual(int concluidas, int total) {
+        return (double) concluidas / total * 100;
     }
 }
