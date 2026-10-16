@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
 
-        // Experimento da Fase 3 (temporário): criando objetos Tarefa
         Tarefa t1 = new Tarefa("Estudar Java");
         Tarefa t2 = new Tarefa("Fazer o README");
         Tarefa t3 = new Tarefa("Aprender Orientação a Objetos");
 
-        t1.setConcluida(true);
-        t3.setConcluida(true);
+        t1.concluir();
+        t3.concluir();
+        t3.reabrir();
 
         System.out.println(t1.getTitulo() + " - concluída? " + t1.isConcluida());
         System.out.println(t2.getTitulo() + " - concluída? " + t2.isConcluida());

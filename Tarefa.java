@@ -22,7 +22,11 @@ public class Tarefa {
         return concluida;
     }
 
-    public void setConcluida(boolean concluida) {
-        this.concluida = concluida;
+    public void concluir() {
+        this.concluida = true;
+    }
+
+    public void reabrir() {
+        this.concluida = false;
     }
 }
