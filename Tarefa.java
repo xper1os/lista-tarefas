@@ -29,4 +29,13 @@ public class Tarefa {
     public void reabrir() {
         this.concluida = false;
     }
+
+    @Override
+    public String toString() {
+        if (concluida) {
+            return "[x] " + titulo;
+        } else {
+            return "[ ] " + titulo;
+        }
+    }
 }

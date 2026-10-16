@@ -9,10 +9,9 @@ public class Main {
         t3.concluir();
         t3.reabrir();
 
-        System.out.println(t1.getTitulo() + " - concluída? " + t1.isConcluida());
-        System.out.println(t2.getTitulo() + " - concluída? " + t2.isConcluida());
-        System.out.println(t3.getTitulo() + " - concluída? " + t3.isConcluida());
-        // Fim do experimento
+        System.out.println(t1);
+        System.out.println(t2);
+        System.out.println(t3);
 
         System.out.println("Minhas Tarefas");
         System.out.println("Bem-vindo à sua lista de tarefas!");
