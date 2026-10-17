@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
 
-        Tarefa t1 = new Tarefa("Estudar Java");
-        Tarefa t2 = new Tarefa("Fazer o README");
-        Tarefa t3 = new Tarefa("Aprender Orientação a Objetos");
+        Tarefa t1 = new Tarefa("Estudar Java", Prioridade.ALTA);
+        Tarefa t2 = new Tarefa("Fazer o README", Prioridade.MEDIA);
+        Tarefa t3 = new Tarefa("Aprender Orientação a Objetos", Prioridade.ALTA);
 
         t1.concluir();
         t3.concluir();

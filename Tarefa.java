@@ -1,10 +1,23 @@
 public class Tarefa {
     private String titulo;
     private boolean concluida;
+    private Prioridade prioridade;
 
-    Tarefa(String titulo) {
+    Tarefa(String titulo, Prioridade prioridade) {
         this.setTitulo(titulo);
         this.concluida = false; // toda tarefa nova nasce pendente
+        this.setPrioridade(prioridade);
+    }
+
+    public Prioridade getPrioridade() {
+        return prioridade;
+    }
+
+    public void setPrioridade(Prioridade prioridade) {
+        if (prioridade == null) {
+            throw new IllegalArgumentException("Prioridade não pode ser nula!");
+        }
+        this.prioridade = prioridade;
     }
 
     public String getTitulo() {
@@ -32,10 +45,12 @@ public class Tarefa {
 
     @Override
     public String toString() {
+        String marcador;
         if (concluida) {
-            return "[x] " + titulo;
+            marcador = "[x] ";
         } else {
-            return "[ ] " + titulo;
+            marcador = "[ ] ";
         }
+        return marcador + titulo + " - " + prioridade;
     }
 }
