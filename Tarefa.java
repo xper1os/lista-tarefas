@@ -1,12 +1,28 @@
+import java.time.LocalDate;
+
 public class Tarefa {
     private String titulo;
     private boolean concluida;
     private Prioridade prioridade;
+    private LocalDate prazo;
 
     Tarefa(String titulo, Prioridade prioridade) {
+        this(titulo, prioridade, null); // sem prazo
+    }
+
+    Tarefa(String titulo, Prioridade prioridade, LocalDate prazo) {
         this.setTitulo(titulo);
         this.concluida = false; // toda tarefa nova nasce pendente
         this.setPrioridade(prioridade);
+        this.setPrazo(prazo);
+    }
+
+    public LocalDate getPrazo() {
+        return prazo;
+    }
+
+    public void setPrazo(LocalDate prazo) {
+        this.prazo = prazo;
     }
 
     public Prioridade getPrioridade() {
@@ -51,6 +67,10 @@ public class Tarefa {
         } else {
             marcador = "[ ] ";
         }
-        return marcador + titulo + " - " + prioridade;
+        String texto = marcador + titulo + " - " + prioridade;
+        if (prazo != null) {
+            texto += " - prazo: " + prazo;
+        }
+        return texto;
     }
 }

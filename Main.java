@@ -1,17 +1,28 @@
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
 
         Tarefa t1 = new Tarefa("Estudar Java", Prioridade.ALTA);
         Tarefa t2 = new Tarefa("Fazer o README", Prioridade.MEDIA);
         Tarefa t3 = new Tarefa("Aprender Orientação a Objetos", Prioridade.ALTA);
+        Tarefa t4 = new Tarefa("Pagamento Boleto", Prioridade.ALTA, LocalDate.of(2026, 10, 20));
 
         t1.concluir();
         t3.concluir();
         t3.reabrir();
+        t4.concluir();
+
+        System.out.println(t4.getPrazo());
+
+        t2.setPrazo(LocalDate.now());
+        System.out.println(t1.getPrazo());
+        System.out.println(t2.getPrazo());
 
         System.out.println(t1);
         System.out.println(t2);
         System.out.println(t3);
+        System.out.println(t4);
 
         System.out.println("Minhas Tarefas");
         System.out.println("Bem-vindo à sua lista de tarefas!");
